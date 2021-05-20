@@ -72,10 +72,14 @@ const Board = () => {
     }
     const winner = calculateWinner(squars);
     const End = isEnd(squars);
-    const status = End ? 'Draw' : winner ?
-        `Winner : ${winner}` :
-        `Next player : ${X ? 'X' : 'O'}`
-
+    let status;
+    if (winner) {
+         status = `Winner : ${winner}`;
+    } else if (End) {
+         status = 'Draw';
+    } else {
+         status = `Next player : ${X ? 'X' : 'O'}` ;
+    }
     return (
         <div className="board" >
             <div className="status" >{status}</div>
